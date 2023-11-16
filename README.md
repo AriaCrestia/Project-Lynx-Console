@@ -3,3 +3,7 @@
 
 ## Currently available functions
 1. Calculator
+2. System Info
+
+## Disclaimer
+- OS commands may not work as intended for systems other that Arch Linux
