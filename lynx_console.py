@@ -13,13 +13,17 @@ while end != True:
         # os.system("clear")
         print("Lynx - Console\n")
         print("1: Calculator")
+        print("2: System Info")
         print("\nE: Exit")
         userInput = input("    -> ")
         if userInput.lower() == "e":
             end = True
-        elif int(userInput) > 1 or int(userInput) < 1:
+        elif int(userInput) < 1 or int(userInput) > 2:
             os.system("clear")
             print("Error: Incorrect option")
+        # elif int(userInput) > 2:
+            # os.system("clear")
+            # print("Error: Incorrect option")
         else:
             userInput = int(userInput)
             handler.Handler(userInput).Choices()

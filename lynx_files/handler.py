@@ -1,5 +1,6 @@
 import os
 from lynx_files import calculator
+from lynx_files import os_info
 
 class Handler:
     def __init__(self, choice):
@@ -8,6 +9,8 @@ class Handler:
         os.system("clear")
         if self.choice == 1:
             CalculatorLink.MathInput()
+        elif self.choice == 2:
+            OSInfoLink.UserChoice()
 
 
 class CalculatorLink:
@@ -35,7 +38,7 @@ class CalculatorLink:
                 CalculatorLink.MathChoice(userInput)
             except KeyboardInterrupt:
                 done = True
-            except ValueError as e:
+            except ValueError:
                 os.system("clear")
                 print("Error: Incorrect option.")
     def MathChoice(choice):
@@ -84,6 +87,46 @@ class CalculatorLink:
             os.system("clear")
             num1 = int(input("Enter number: "))
             print(calculator.AdditionalOps(num1).CubeRoot())
+            print()
+        else:
+            os.system("clear")
+            print("Error: Incorrect option.")
+ 
+class OSInfoLink:
+    def UserChoice():
+        done = False
+        while done != True:
+            try:
+                print("1: Platform")
+                print("2: Release version")
+                print("3: Platform and release version")
+                print("\nE: Exit")
+                userInput = input("    -> ")
+                if userInput.lower() == "e":
+                    os.system("clear")
+                    done = True
+                    break
+                else:
+                    userInput = int(userInput)
+                    OSInfoLink.Choices(userInput)
+            except ValueError:
+                os.system("clear")
+                print(f"Error: Incorrect option.")
+            except KeyboardInterrupt:
+                os.system("clear")
+                done = True
+    def Choices(input):
+        if input == 1:
+            os.system("clear")
+            print(os_info.SystemInfo.Platform())
+            print()
+        elif input == 2:
+            os.system("clear")
+            print(os_info.SystemInfo.ReleaseVer())
+            print()
+        elif input == 3:
+            os.system("clear")
+            print(os_info.SystemInfo.FullInfo())
             print()
         else:
             os.system("clear")
